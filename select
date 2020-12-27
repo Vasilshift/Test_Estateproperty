@@ -1,0 +1,51 @@
+use estateprop;
+select descrip,
+CASE
+	WHEN descrip LIKE '%участок%' THEN 'Участок'
+	WHEN descrip LIKE '%дача%' THEN 'Дача'
+	WHEN descrip LIKE '%дом%' THEN 'Дом'
+	WHEN descrip LIKE '%коттедж%' THEN 'Коттедж'
+	WHEN descrip LIKE '%таунхаус%' THEN 'Таунхаус'
+    WHEN descrip LIKE '%апартаменты%' THEN 'Апартаменты'
+	WHEN descrip LIKE '%гостиница%' THEN 'Гостиница'
+	WHEN descrip LIKE '%квартира%' THEN 'Квартира'
+	WHEN descrip LIKE '%комната%' THEN 'Комната'
+	WHEN descrip LIKE '%гараж%' THEN 'Гараж'
+
+ELSE 'Прочее'
+END AS TypeObject,
+
+CASE
+	WHEN descrip LIKE '%участок%' OR descrip LIKE '%земл%' THEN 'земля' 
+	WHEN descrip LIKE '%земл%' AND descrip NOT LIKE '%участок%' THEN 'земля'
+	WHEN descrip LIKE '%дача%' THEN 'ижс'
+	WHEN descrip LIKE '%дом%' THEN 'ижс'
+	WHEN descrip LIKE '%коттедж%' THEN 'ижс'
+	WHEN descrip LIKE '%таунхаус%' THEN 'ижс'
+	WHEN descrip LIKE '%ижс%' THEN 'ижс'
+	WHEN descrip IN ('%апартаменты%', '%гостиница%', '%квартир%', '%комната%') THEN 'квартиры'
+	WHEN descrip LIKE '%офис%' THEN 'коммерческая'
+	WHEN descrip LIKE '%автоуслуги%' THEN 'коммерческая'
+	WHEN descrip LIKE '%АЗС%' THEN 'коммерческая'
+	WHEN descrip LIKE '%База отдыха%' THEN 'коммерческая'
+	WHEN descrip LIKE '%мущественный%комплекс%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Здание%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Общепит%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Торговое%' THEN 'коммерческая'
+	WHEN descrip LIKE '%спортзал%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Паркинг%' THEN 'коммерческая'
+	WHEN descrip LIKE '%складск%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Произв%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Сельхоз%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Гостиница%' THEN 'коммерческая'
+	WHEN descrip LIKE '%предприят%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Гараж%' THEN 'коммерческая'
+	WHEN descrip LIKE '%комнат%' THEN 'квартиры'
+	WHEN descrip LIKE '%коммерческ%' THEN 'коммерческая'
+	WHEN descrip LIKE '%услуг%' THEN 'коммерческая'
+	WHEN descrip LIKE '%склад%' THEN 'коммерческая'
+	WHEN descrip LIKE '%производст%' THEN 'коммерческая'
+	WHEN descrip LIKE '%Фитнес-центр%' THEN 'коммерческая'
+	
+END AS TypeOffer
+from incomeData
