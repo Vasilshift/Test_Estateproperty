@@ -1,0 +1,15 @@
+-- Создаем таблицу для входящих данных
+USE [estateprop]
+GO
+
+/****** Object:  Table [dbo].[incomeData]    Script Date: 27.12.2020 13:43:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[incomeData](
+	[descrip] [nchar](255) NULL
+) ON [PRIMARY]
+GO
